@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Login</title>
+  <link rel="stylesheet" href="css/login css.css">
+</head>
+
+<body>
+  <div class="topnav">
+    <img class="logo" src="https://cdn.pixabay.com/photo/2020/08/05/13/27/eco-5465459_960_720.png" />
+    <span class="logo">RECIPRO</span>
+    <!-- <a class="active" href="Home.html">Home</a>
+    <a href="Contact Us.html">Contact</a> -->
+  </div>
+  <div class="bg"><img src="css/bg.jpg"></div>
+  <div class="center">
+    <h1>Login</h1>
+    <form id="login-form" method="post" action="/login">
+      <div class="txt_field">
+        <input type="text" name="username" required>
+        <span></span>
+        <label>Username</label>
+      </div>
+      <div class="txt_field">
+        <input type="password" name="password" required>
+        <span></span>
+        <label>Password</label>
+      </div>
+      <!-- <div class="pass">Forgot Password?</div> -->
+      <button id="submitBtn" type="submit">Login</button>
+      <div class="signup_link">
+        Not a member? <a href="signup.html">Signup</a>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      document.getElementById('login-form').addEventListener('submit', async function (event) {
+        event.preventDefault();
+
+        const username = document.querySelector('input[name="username"]').value;
+        const password = document.querySelector('input[name="password"]').value;
+
+        // Send a POST request to your server
+        const response = await fetch('http://localhost:3000/login', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ username, password }),
+        });
+
+        // Handle the response as needed
+        const result = await response.json();
+
+        if (result.success) {
+          // Redirect to the shopping.html page on successful login
+          window.location.href = 'home.html';
+        } else {
+          // Display an alert and reset the input fields
+          alert('Login failed. Please check your username and password.');
+          document.querySelector('input[name="username"]').value = '';
+          document.querySelector('input[name="password"]').value = '';
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>

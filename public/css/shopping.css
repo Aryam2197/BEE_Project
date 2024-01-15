@@ -1,0 +1,53 @@
+.navcolor{
+    background-color:#219F94 !important;
+}
+.logo{
+    width:50px !important;
+    height:50px !important;
+}
+.heading1{
+    display:flex;
+    flex-direction:column;
+    background: linear-gradient(to right, green, blue);
+    justify-content:center;
+    align-items:center;
+}
+, );
+    justify-content:center;
+    align-items:center;
+}
+.heading1 h1{
+    margin:10px;
+    font-size:50px;
+    font-weight:bold;
+    color:#fff;
+
+}
+.heading1 p{
+    color:yellow;
+    font-style:italic;
+}
+.buttons{
+    display:flex;
+    flex-direction:row;
+}
+.buttons .btnstyle{
+    display:inline-block;
+    border:1px solid white;
+    background-color:#ccc;
+    border-radius:20px;
+    margin:8px;
+    padding:8px;
+    width:auto;
+
+
+}
+.buttons .btnstyle:hover{
+    background-color:rgb(22, 235, 22);
+}
+.details{
+    width:80%;
+    margin:auto;
+    margin-top:50px;
+    
+}

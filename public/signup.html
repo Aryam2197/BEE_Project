@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Signup</title>
+    <link rel="stylesheet" href="css/login css.css">
+    <style>
+      /* Add any additional styles if needed */
+      /* Example: body { background-color: #f0f0f0; } */
+    </style>
+  </head>
+  <body>
+    <div class="topnav">
+      <img class="logo" src="https://cdn.pixabay.com/photo/2020/08/05/13/27/eco-5465459_960_720.png" />  
+      <span class="logo">RECIPRO</span>
+      <!-- <a class="active" href="Home.html">Home</a>
+      <a href="Contact Us.html">Contact</a> -->
+    </div>
+    <div class="bg"><img src="css/bg.jpg" ></div>
+    <div class="center">
+      <h1>SignUp</h1>
+      <form id="signup-form" >
+        <div class="txt_field">
+          <input type="text" id="username" required>
+          <span></span>
+          <label>Username</label>
+        </div>
+        <div class="txt_field">
+          <input type="password" id="password" required>
+          <span></span>
+          <label>Password</label>
+        </div>
+        <!-- <div class="pass">Forgot Password?</div> -->
+        <button id="submitBtn" type="submit">Sign Up</button>
+        <div class="signup_link">
+          Already a member? <a href="login.html">Login</a>
+        </div>
+      </form>
+    </div>
+
+    <script>
+      document.getElementById('signup-form').addEventListener('submit', async function (event) {
+        event.preventDefault();
+    
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+    
+        // Send a POST request to your server
+        const response = await fetch('http://localhost:3000/signup', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ username, password }),
+        });
+    
+        // Handle the response as needed
+        const result = await response.json();
+        console.log(result);
+    
+        if (result.success) {
+          // Show alert and then redirect to the login page
+          alert('User registered successfully! Please proceed to Login.');
+          window.location.href = 'login.html';
+        } else {
+          // Handle registration failure, show an error message or take appropriate action
+          alert('Registration failed. Please try again.');
+        }
+      });
+    </script>
+  </body>
+</html>

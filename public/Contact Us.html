@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RECIPRO</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;700&display=swap" rel="stylesheet">
+    <link href="css/Contact Us.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<section class="sub header">
+    <nav>
+	    <a href="Home.html"></a>
+		<div class="nav-links" id="navlinks">
+                <i class="fa fa-times" onclick ="hideMenu()"></i>
+		<ul>
+		    <li><a href="Home.html">Home</a></li>
+			<li><a href="">About</a></li>
+			<li><a href="login.html">Signup</a></li>
+			<li><a href="Contact Us.html"></a></li>
+		</ul>
+	</div>
+        <!-- <i class="fa fa-bars" onclick="showMenu()"></i> -->
+        <a href="home.html"><i class="fa fa-home"></i></a>
+
+	</nav>
+        <div class="text-box">
+	<h1 >CONTACT US</h1>
+        </div>
+	</section>
+	
+	<section class="location">
+	<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3437.1749715517735!2d76.65758911552363!3d30.516091103091362!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390fc323
+	44a6e2d7%3A0x81b346dee91799ca!2sChitkara%20University
+	!5e0!3m2!1sen!2sin!4v1643163973644!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+	</section>
+	
+	
+	<section class="contact us">
+	
+	<div class="row">
+	   <div class="contact-col">
+	       <div>
+		       <i class="fa fa-home"></i>
+			   <span>
+			        <h5>Chandigarh-Patiala National Highway,Punjab</h5>
+					<p></p>  
+		   </div>  
+           <div>
+		       <i class="fa fa-phone"></i>
+			   <span>
+			        <h5>+917973460080</h5>
+					<p>Monday to Saturday, 10Am to 5pm</p>  
+		   </div>
+  		   <div class ="email">
+		       <i class="fa fa-envelope-o"></i>
+			   <span>
+			        <h5>sankalp6025.be21@chitkara.edu.in</h5>
+			        <h5>aryam2426.be21@chitkara.edu.in</h5>
+			        <h5>aryan2427.be21@chitkara.edu.in</h5>
+			        <h5>sidharth1362.be21@chitkara.edu.in</h5>
+					<p>Email us your query</p>  
+		   </div> 
+	     </div>
+	   <div class="contact-col">
+	
+		<form id="contactForm" action="/contact" method="post">
+			<input type="text" name="name" placeholder="Enter your name" required>
+			<input type="email" name="email" placeholder="Enter email address" required>
+			<input type="text" name="subject" placeholder="Enter your subject" required>
+			<textarea rows="8" name="message" placeholder="Message"></textarea>
+			<button type="submit" class="hero-btn red-btn">Send Message</button>
+		  </form>
+
+
+
+	
+	   </div>
+	 </div>  
+<section class="footer">
+       <h4>About Us</h4>
+	   <p>Whether you have recycling questions or are interested in one of our educational programs, we’re here to help!</p>
+	   <div class="icons">
+	   <i class="fa fa-facebook"></i>
+	   <i class="fa fa-twitter"></i>
+	   <i class="fa fa-instagram"></i>
+	   <i class="fa fa-linkedin"></i>
+	   </div>
+	   
+	   </section>
+	   
+	   <!-----Javascript for toggle Menu----->
+
+<!-- <script>
+	   var navlinks = document.getElementById("navlinks");
+	   function showMenu(){
+	       navlinks.style.right="0";
+	   }
+	   function hideMenu(){
+	   navlinks.style.right ="-200px";
+	   }
+</script> -->
+
+<script>
+	document.getElementById('contactForm').addEventListener('submit', async function (event) {
+		event.preventDefault();
+	
+		const formData = {
+		  name: document.querySelector('input[name="name"]').value,
+		  email: document.querySelector('input[name="email"]').value,
+		  subject: document.querySelector('input[name="subject"]').value,
+		  message: document.querySelector('textarea[name="message"]').value,
+		};
+	
+		try {
+		  const response = await fetch('/contact', {
+			method: 'POST',
+			headers: {
+			  'Content-Type': 'application/json',
+			},
+			body: JSON.stringify(formData),
+		  });
+	
+		  const result = await response.json();
+	
+		  if (result.success) {
+			console.log('Contact form data submitted successfully');
+		  } else {
+			console.error('Failed to submit contact form data');
+		  }
+		} catch (error) {
+		  console.error(error);
+		}
+	  });
+  </script>
+	   
+	
+</body>
+</html>	
